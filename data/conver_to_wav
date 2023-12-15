@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# https://stackoverflow.com/questions/13358287/how-to-convert-any-mp3-file-to-wav-16khz-mono-16bit
+# https://stackoverflow.com/questions/9458480/read-mp3-in-python-3
+file_name=$1
+out_file_name="${file_name%.*}.wav"
+# ffmpeg -i "$file_name" -acodec pcm_s16le -ac 1 -ar 16000 "$out_file_name"
+# ffmpeg -i "$file_name" -acodec pcm_s16le -ac 2 -ar 16000 "$out_file_name"
+ffmpeg -i "$file_name" -acodec pcm_u8 -ac 1 -ar 16000 "$out_file_name"
+echo "$file_name -> $out_file_name"
